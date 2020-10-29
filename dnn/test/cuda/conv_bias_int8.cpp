@@ -344,7 +344,7 @@ void benchmark_target_algo_with_cudnn_tsc(
                                       : Format::NCHW4;
         param.format = format_cudnn;
         benchmarker_cudnn.set_param(param);
-       
+
         float time_in_ms = 0.f;
         if (algo) {
             time_in_ms =
@@ -369,10 +369,10 @@ void benchmark_target_algo_with_cudnn_tsc(
                 benchmarker_cudnn.execs({get_tensor_shape(src, format_cudnn),
                                          get_tensor_shape(filter, format_cudnn),
                                          get_tensor_shape(bias, format_cudnn),
-                                         {}, 
+                                         {},
                                          {}}) /
                 RUNS;
- 
+
         float flo = 2.0 * arg.n * arg.co * ho * wo * arg.ci * arg.f * arg.f /
                     (1e12);
         printf("src=%s, filter=%s, dst=%s, time(algo=%s)=%.2f %.2fTops, "
@@ -1085,8 +1085,8 @@ TEST_F(CUDA, CONV_BIAS_INT8_CHWN4_UNROLL_WIDTH_TENSORCORE_1x1_ALGO_2) {
 
 
 #if CUDA_VERSION >= 10020
-/// \note: we only check several cases and block sizes in megdnn_test, the full
-/// testcases are written in cutlass repository
+/// \note: we only check several cases and block sizes in megdnn_test, the
+/// full testcases are written in cutlass repository
 TEST_F(CUDA, CUTLASS_CONV_BIAS_INT8_NCHW32_IMMA) {
     require_compute_capability_eq(7, 5);
     Checker<ConvBiasForward> checker(handle_cuda());
