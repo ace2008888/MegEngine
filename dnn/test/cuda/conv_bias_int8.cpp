@@ -18,6 +18,8 @@
 #include "test/cuda/benchmark.h"
 #include "test/cuda/fixture.h"
 #include "test/cuda/utils.h"
+#include "test/common/tensor.h"
+#include "test/common/workspace_wrapper.h"
 
 #define V1(x) #x
 #define V(x) V1(x)
